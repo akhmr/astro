@@ -22,8 +22,8 @@ import jakarta.persistence.EntityManagerFactory;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories("com.destro.entity.repo")
-@EntityScan("com.destro.entity.*)")
+@EnableJpaRepositories("com.astro.entity.repo")
+@EntityScan("com.astro.entity.*)")
 public class DbConfig {
 
     @Autowired
@@ -47,7 +47,7 @@ public class DbConfig {
 		System.out.println("creating em");
 		LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
 		em.setDataSource(dataSource);
-		em.setPackagesToScan("com.destro.entity");
+		em.setPackagesToScan("com.astro.entity");
 		HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		em.setJpaVendorAdapter(vendorAdapter);
 		em.setJpaProperties(hibernateProperties());   

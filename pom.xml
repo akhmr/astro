@@ -9,10 +9,10 @@
 		<version>3.3.2</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.destro</groupId>
-	<artifactId>destro</artifactId>
+	<groupId>com.astro</groupId>
+	<artifactId>astro</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>destro</name>
+	<name>astro</name>
 	<description>Astro monolithic application</description>
 	<url />
 	<licenses>

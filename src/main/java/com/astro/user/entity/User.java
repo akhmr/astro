@@ -1,4 +1,4 @@
-package com.astro.entity;
+package com.astro.user.entity;
 
 import org.hibernate.annotations.DialectOverride.Version;
 

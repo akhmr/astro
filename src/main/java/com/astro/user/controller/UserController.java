@@ -1,4 +1,4 @@
-package com.astro.controller;
+package com.astro.user.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.astro.common.Response;
 import com.astro.request.UserSignUpRequest;
-import com.astro.services.UserService;
+import com.astro.user.services.UserService;
 
 @RestController
 @RequestMapping("/api/v1/users")

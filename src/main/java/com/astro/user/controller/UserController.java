@@ -11,14 +11,14 @@ import com.astro.request.UserSignUpRequest;
 import com.astro.user.services.UserService;
 
 @RestController
-@RequestMapping("/api/v1/users")
+@RequestMapping("/api/users")
 public class UserController {
 	
 	@Autowired
 	private UserService userService;
 	
 	
-	@PostMapping("/signup")
+	@PostMapping("/v1/signup")
    public Response<String> signUp(@RequestBody UserSignUpRequest userSignUpRequest) {
 	   return new Response<String>("000","success",userService.signUp(userSignUpRequest));
 	}

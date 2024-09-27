@@ -22,7 +22,7 @@ import jakarta.persistence.EntityManagerFactory;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories("com.astro.entity.repo")
+@EnableJpaRepositories("com.astro.entity.*")
 @EntityScan("com.astro.entity.*)")
 public class DbConfig {
 

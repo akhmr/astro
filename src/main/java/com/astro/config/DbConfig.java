@@ -22,8 +22,8 @@ import jakarta.persistence.EntityManagerFactory;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories("com.astro.entity.*")
-@EntityScan("com.astro.entity.*)")
+@EnableJpaRepositories({"com.astro.user.entity.repo","com.astro.entity.repo"})
+@EntityScan({"com.astro.entity.*","com.astro.user.entity.*"})
 public class DbConfig {
 
     @Autowired
@@ -47,7 +47,9 @@ public class DbConfig {
 		System.out.println("creating em");
 		LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
 		em.setDataSource(dataSource);
-		em.setPackagesToScan("com.astro.entity");
+		 String[] packagesArray = "com.mypackage1,com.mypackage2".split(",");
+		    em.setPackagesToScan(packagesArray);
+		em.setPackagesToScan("com.astro.entity","com.astro.user.entity");
 		HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		em.setJpaVendorAdapter(vendorAdapter);
 		em.setJpaProperties(hibernateProperties());   

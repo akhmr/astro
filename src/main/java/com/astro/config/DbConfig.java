@@ -72,6 +72,7 @@ public class DbConfig {
 	        {
 	            setProperty("hibernate.show_sql", "false");
 	            setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+	            setProperty("hibernate.physical_naming_strategy", "org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy");
 	         }
 	      };
 	   }

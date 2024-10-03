@@ -7,8 +7,8 @@ import com.astro.entity.AstroNum;
 import com.astro.entity.AstroNumRelation;
 import com.astro.entity.repo.AstroNumRelationRepo;
 import com.astro.entity.repo.AstroNumRepo;
-import com.astro.request.AstroNumRelAdminRequest;
-import com.astro.request.CreateOrUpdateAstroNumAdminRequest;
+import com.astro.model.AstroNumRelAdminRequest;
+import com.astro.model.CreateOrUpdateAstroNumAdminRequest;
 
 import jakarta.transaction.Transactional;
 

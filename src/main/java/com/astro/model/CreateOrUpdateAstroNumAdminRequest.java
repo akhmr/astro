@@ -1,4 +1,4 @@
-package com.astro.request;
+package com.astro.model;
 
 import com.astro.common.eum.NumberType;
 

@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.astro.admin.service.AstroAdminNumerologyService;
 import com.astro.common.Response;
-import com.astro.request.AstroNumRelAdminRequest;
-import com.astro.request.CreateOrUpdateAstroNumAdminRequest;
+import com.astro.model.AstroNumRelAdminRequest;
+import com.astro.model.CreateOrUpdateAstroNumAdminRequest;
 
 @RestController
 @RequestMapping("/api/admin")
@@ -27,6 +27,7 @@ public class AstroAdminController {
 
 		logger.info("CreateOrUpdateAstroNumAdminRequest {} ", request);
 		return new Response<String>("000", "success",numerologyService.createOrUpdateNumerologyNumRequest(request));
+	
 	}
 	
 	@PostMapping("/v1/numerology/num/rel")

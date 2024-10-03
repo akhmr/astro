@@ -3,7 +3,7 @@ package com.astro.user.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.astro.request.UserSignUpRequest;
+import com.astro.model.UserSignUpRequest;
 import com.astro.user.entity.User;
 import com.astro.user.entity.repo.UserRepo;
 

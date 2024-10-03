@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.astro.admin.service.AstroNumerologyService;
 import com.astro.common.Response;
+import com.astro.common.constant.StatusCode;
 import com.astro.model.NumerologyRequest;
 import com.astro.model.NumerologyResponse;
 
@@ -26,7 +27,8 @@ public class NumerologyController {
 	public Response<NumerologyResponse> numerologyRequest(@RequestBody NumerologyRequest request) {
 
 		logger.info("CreateOrUpdateAstroNumAdminRequest {} ", request);
-		return new Response<NumerologyResponse>("000", "success",numerologyService.numerologyRequest(request));
+		return new Response<NumerologyResponse>(StatusCode.SUCCESS.name(), StatusCode.SUCCESS.getMessage(),
+				numerologyService.numerologyRequest(request));
 	
 	}
 	

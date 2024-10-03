@@ -9,7 +9,6 @@ import com.astro.model.NumerologyResponse;
 public class AstroNumerologyService {
 
 	public NumerologyResponse numerologyRequest(NumerologyRequest request) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

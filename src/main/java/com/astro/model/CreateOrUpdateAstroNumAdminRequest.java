@@ -1,11 +1,11 @@
 package com.astro.model;
 
-import com.astro.common.eum.NumberType;
+import com.astro.common.eum.NumerologyType;
 
 public class CreateOrUpdateAstroNumAdminRequest {
 	
 	private Integer number;
-	private NumberType numberType;
+	private NumerologyType numberType;
 	private String category;
 	private String numDesc;
 	public Integer getNumber() {
@@ -14,10 +14,10 @@ public class CreateOrUpdateAstroNumAdminRequest {
 	public void setNumber(Integer number) {
 		this.number = number;
 	}
-	public NumberType getNumberType() {
+	public NumerologyType getNumberType() {
 		return numberType;
 	}
-	public void setNumberType(NumberType numberType) {
+	public void setNumberType(NumerologyType numberType) {
 		this.numberType = numberType;
 	}
 	public String getCategory() {

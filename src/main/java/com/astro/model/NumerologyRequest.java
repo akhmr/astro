@@ -1,20 +1,20 @@
 package com.astro.model;
 
-import com.astro.common.eum.NumerologyType;
+import com.astro.common.eum.AstroNumType;
 
 public class NumerologyRequest {
 	
-	private NumerologyType numerologyType;
+	private AstroNumType numerologyType;
 	
 	private String name;
 	
 	private String dob;
 
-	public NumerologyType getNumerologyType() {
+	public AstroNumType getNumerologyType() {
 		return numerologyType;
 	}
 
-	public void setNumerologyType(NumerologyType numerologyType) {
+	public void setNumerologyType(AstroNumType numerologyType) {
 		this.numerologyType = numerologyType;
 	}
 

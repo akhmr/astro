@@ -18,7 +18,7 @@ public class NumerologyUtils {
 	}
 
 	private static int reduceToSingleDigit(int num) {
-		while (num > 9 /**&& num != 11 && num != 22 && num != 33*/) {
+		while (num > 9 ) {
 			num = sumOfDigits(num);
 		}
 		return num;

@@ -9,7 +9,15 @@ import com.astro.model.NumerologyResponse;
 public class AstroNumerologyService {
 
 	public NumerologyResponse numerologyRequest(NumerologyRequest request) {
-		return null;
+		
+		NumerologyResponse  response  = new NumerologyResponse();
+		
+		//NumerologyUtils
+		
+	
+		
+		
+		return response;
 	}
 
 }

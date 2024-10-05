@@ -47,8 +47,6 @@ public class DbConfig {
 		System.out.println("creating em");
 		LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
 		em.setDataSource(dataSource);
-		 String[] packagesArray = "com.mypackage1,com.mypackage2".split(",");
-		    em.setPackagesToScan(packagesArray);
 		em.setPackagesToScan("com.astro.entity","com.astro.user.entity");
 		HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		em.setJpaVendorAdapter(vendorAdapter);
@@ -70,7 +68,7 @@ public class DbConfig {
 	        private static final long serialVersionUID = 1L;
 
 	        {
-	            setProperty("hibernate.show_sql", "false");
+	            setProperty("hibernate.show_sql", "true");
 	            setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
 	            setProperty("hibernate.physical_naming_strategy", "org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy");
 	         }

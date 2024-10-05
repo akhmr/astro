@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.astro.common.utils.DateUtil;
@@ -18,7 +19,7 @@ public class TestController {
 	private static final Logger logger = LoggerFactory.getLogger(AstroAdminController.class);
 
 	@GetMapping("/test/lnp")
-	public Integer getLNP(String dateString) {
+	public Integer getLNP(@RequestParam String  dateString) {
 		
 		logger.info("LNP date {} ",dateString);
 

@@ -8,9 +8,8 @@ public class DateUtil {
 	private final static String DDMMYYYY="dd/MM/yyyy";
 	
 	public static LocalDate parseDateToLocalDate(String dateString) {
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DDMMYYYY);
 		return LocalDate.parse(dateString, formatter);
-
 	}
 
 

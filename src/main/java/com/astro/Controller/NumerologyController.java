@@ -23,7 +23,7 @@ public class NumerologyController {
 	@Autowired
 	private AstroNumerologyService numerologyService;
 	
-	@PostMapping("/num/v1")
+	@PostMapping("num/v1")
 	public Response<NumerologyResponse> numerologyRequest(@RequestBody NumerologyRequest request) {
 
 		logger.info("CreateOrUpdateAstroNumAdminRequest {} ", request);

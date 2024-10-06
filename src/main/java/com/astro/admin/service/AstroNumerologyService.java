@@ -1,14 +1,13 @@
 package com.astro.admin.service;
 
 import java.time.LocalDate;
-import java.util.Map;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.astro.admin.Controller.AstroAdminController;
 import com.astro.common.eum.AstroNumType;
 import com.astro.common.utils.DateUtil;
 import com.astro.common.utils.NumerologyUtils;
@@ -37,15 +36,12 @@ public class AstroNumerologyService {
 	    Integer lnpNum= NumerologyUtils.calculateLifePathNumber(day, month, year);
 	    
 	    logger.info("Life Path Num {} ",lnpNum);
-	    AstroNum astroNum=  astroNumRepo.findbyNumberAndCategory(lnpNum,"lnp_generic");
-	    
-	    if( astroNum == null) {
-	    	throw new RuntimeException("Number does not exist");
-	    }
-		
-	    Map<String,String> astroMap = response.getAstroMap();
-	    astroMap.put(AstroNumType.LNP.name(), astroNum.getNum_desc());
-		return response;
+	 // Fetch AstroNum and handle if null using Optional
+	    AstroNum astroNum = Optional.ofNullable(astroNumRepo.findbyNumberAndCategory(lnpNum, "lnp_generic"))
+	                                .orElseThrow(() -> new RuntimeException("Number does not exist"));
+
+	    response.getAstroMap().put(AstroNumType.LNP.name(), astroNum.getNum_desc());
+	    return response;
 	}
 
 }

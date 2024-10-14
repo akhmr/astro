@@ -19,7 +19,11 @@ public class AstroNum {
     private String posTrait;
     private String negTrait;
     private String remedy;
-
+    
+    public AstroNum() {
+    	
+    }
+    
     private AstroNum(Builder builder) {
         this.id = builder.id;
         this.number = builder.number;

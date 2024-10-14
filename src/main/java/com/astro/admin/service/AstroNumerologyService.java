@@ -1,18 +1,25 @@
 package com.astro.admin.service;
 
-import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.astro.common.constant.AstroConstant;
 import com.astro.common.eum.AstroNumType;
 import com.astro.common.utils.DateUtil;
 import com.astro.common.utils.NumerologyUtils;
 import com.astro.entity.AstroNum;
 import com.astro.entity.repo.AstroNumRepo;
+import com.astro.model.AstroNumDto;
+import com.astro.model.AstroNumSubcategory;
 import com.astro.model.NumerologyRequest;
 import com.astro.model.NumerologyResponse;
 
@@ -26,23 +33,47 @@ public class AstroNumerologyService {
 	private AstroNumRepo  astroNumRepo;
 
 	public NumerologyResponse numerologyRequest(NumerologyRequest request) {
-		
-		NumerologyResponse  response  = new NumerologyResponse();
-		
-		LocalDate localDate = DateUtil.parseDateToLocalDate(request.getDob());
-		int day = localDate.getDayOfMonth();
-		int month = localDate.getMonthValue();
-		int year = localDate.getYear();
-	    Integer lnpNum= NumerologyUtils.calculateLifePathNumber(day, month, year);
-	    
-	    logger.info("Life Path Num {} ",lnpNum);
-	 // Fetch AstroNum and handle if null using Optional
-	    AstroNum astroNum = Optional.ofNullable(astroNumRepo.findbyNumberAndCategory(lnpNum, "lnp_generic"))
-	                                .orElseThrow(() -> new RuntimeException("Number does not exist"));
+        List<AstroNumDto> astroNumDtos = AstroConstant.parentCategories.stream()
+            .map(astroNumType -> getAstroNumDetail(
+                calculateNumerologyNumber(astroNumType, request), astroNumType))
+            .collect(Collectors.toList());
 
-	    //response.getAstroMap().put(AstroNumType.LNP.name(), astroNum.getNum_desc());
-	   // response.getAstroMap().put(AstroNumType.DRIVERNO.name(), "Driver no is 10");
-	    return response;
-	}
+        return new NumerologyResponse(astroNumDtos);
+    }
 
+    private Integer calculateNumerologyNumber(AstroNumType astroNumType, NumerologyRequest request) {
+        return switch (astroNumType) {
+            case LNP -> NumerologyUtils.calculateLifePathNumber(DateUtil.parseDateToLocalDate(request.getDob()));
+            case DRIVERNO -> NumerologyUtils.calculateDriverNo();
+            case SOULNO -> NumerologyUtils.calculateSoulNo();
+            case KUANO -> NumerologyUtils.calculateKuaNo();
+            default -> throw new IllegalArgumentException("Invalid numerology type: " + astroNumType);
+        };
+    }
+
+    private AstroNumDto getAstroNumDetail(Integer astroNumber, AstroNumType astroNumType) {
+        List<AstroNum> astroNums = Optional.ofNullable(
+                astroNumRepo.findByNumberAndCategories(astroNumber, AstroConstant.subCategories))
+            .orElseThrow(() -> new RuntimeException("Number does not exist for type: " + astroNumType));
+
+        AstroNum astroNumEntity = astroNums.get(0);
+        return new AstroNumDto(
+            astroNumEntity.getNumber(),
+            astroNumEntity.getNumType(),
+            astroNumEntity.getDisplayName(),
+            getAstroNumSubcategories(astroNums)
+        );
+    }
+	
+	private List<AstroNumSubcategory> getAstroNumSubcategories(List<AstroNum> astroNums) {
+        return Optional.ofNullable(astroNums)
+            .orElse(Collections.emptyList())
+            .stream()
+            .map(astroNum -> new AstroNumSubcategory(
+                astroNum.getDisplayName(),
+                astroNum.getPosTrait(),
+                astroNum.getNegTrait(),
+                astroNum.getRemedy()))
+            .collect(Collectors.toList());
+    }
 }

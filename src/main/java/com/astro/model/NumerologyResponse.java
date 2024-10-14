@@ -1,19 +1,18 @@
 package com.astro.model;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
-public class NumerologyResponse {
-	
-	private Map<String,AstroNumDto> astroMap = new HashMap<>();
+public record NumerologyResponse(List<AstroNumDto> astroDtos) {
 
-	public Map<String, AstroNumDto> getAstroMap() {
-		return astroMap;
-	}
+    public NumerologyResponse {
+        // Ensure the map is non-null; use an empty map if null
+        if (astroDtos == null) {
+        	astroDtos = List.of(); // Create an immutable empty map
+        }
+    }
 
-	public void setAstroMap(Map<String, AstroNumDto> astroMap) {
-		this.astroMap = astroMap;
-	}
-	
-	
+    @Override
+    public String toString() {
+        return "NumerologyResponse [astroDtos=" + astroDtos + "]";
+    }
 }

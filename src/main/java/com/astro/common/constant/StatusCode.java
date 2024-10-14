@@ -2,7 +2,7 @@ package com.astro.common.constant;
 
 public enum StatusCode {
 
-	SUCCESS("000", "Operation completed successfully"),
+	SUCCESS("000", "Api Success"),
 	ERROR("500", "Internal server error"),
 	NOT_FOUND("300", "Resource not found"),
 	UNAUTHORIZED("400", "Unauthorized access");

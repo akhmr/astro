@@ -26,15 +26,19 @@ public class AstroAdminNumerologyService {
 	@Transactional
 	public String createOrUpdateNumerologyNumRequest(CreateOrUpdateAstroNumAdminRequest request) {
 		
-		AstroNum astroNum = new AstroNum();
-		astroNum.setNumber(request.getNumber());
-		astroNum.setNumType(request.getNumberType().name());
-		astroNum.setCategory(request.getCategory());
-		astroNum.setNum_desc(request.getNumDesc());
-		
-		astroNumRepo.save(astroNum);
-		
-		return "";
+		AstroNum astroNum = new AstroNum.Builder()
+	            .setNumber(request.number())
+	            .setNumType(request.numberType().name())
+	            .setCategory(request.category())
+	            .setDisplayName(request.displayName())
+	            .setPosTrait(request.posTrait())
+	            .setNegTrait(request.negTrait())
+	            .setRemedy(request.remedy())
+	            .build();
+	    
+	    astroNumRepo.save(astroNum);
+	    
+	    return "";
 	}
 
 	@Transactional

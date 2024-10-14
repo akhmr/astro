@@ -40,7 +40,8 @@ public class AstroNumerologyService {
 	    AstroNum astroNum = Optional.ofNullable(astroNumRepo.findbyNumberAndCategory(lnpNum, "lnp_generic"))
 	                                .orElseThrow(() -> new RuntimeException("Number does not exist"));
 
-	    response.getAstroMap().put(AstroNumType.LNP.name(), astroNum.getNum_desc());
+	    //response.getAstroMap().put(AstroNumType.LNP.name(), astroNum.getNum_desc());
+	   // response.getAstroMap().put(AstroNumType.DRIVERNO.name(), "Driver no is 10");
 	    return response;
 	}
 

@@ -5,13 +5,13 @@ import java.util.Map;
 
 public class NumerologyResponse {
 	
-	private Map<String,String> astroMap = new HashMap<>();
+	private Map<String,AstroNumDto> astroMap = new HashMap<>();
 
-	public Map<String, String> getAstroMap() {
+	public Map<String, AstroNumDto> getAstroMap() {
 		return astroMap;
 	}
 
-	public void setAstroMap(Map<String, String> astroMap) {
+	public void setAstroMap(Map<String, AstroNumDto> astroMap) {
 		this.astroMap = astroMap;
 	}
 	

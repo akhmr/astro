@@ -46,13 +46,14 @@ public class AstroNumerologyService {
 
     private AstroNumDto getAstroNumDetail(Integer astroNumber, AstroNumType astroNumType) {
         List<AstroNum> astroNums = Optional.ofNullable(
-						                astroNumRepo.findByNumberAndCategories(astroNumber, AstroConstant.subCategories))
+						                astroNumRepo.findByNumberAndNumTypeAndCategories(astroNumber,astroNumType.name(), AstroConstant.subCategories))
         								.orElseThrow(
 						                () -> new RuntimeException("Number does not exist for type: " + astroNumType)
         								);
 
         if (astroNums.isEmpty()) {
-            throw new RuntimeException("Number does not exist for type: " + astroNumType);
+        	return null;
+          //  throw new RuntimeException("Number does not exist for type: " + astroNumType);
         }
         logger.info("AstroNums {}",astroNums);
         AstroNum astroNumEntity = astroNums.get(0);

@@ -56,6 +56,10 @@ public class AstroNumerologyService {
                 astroNumRepo.findByNumberAndCategories(astroNumber, AstroConstant.subCategories))
             .orElseThrow(() -> new RuntimeException("Number does not exist for type: " + astroNumType));
 
+        if (astroNums.isEmpty()) {
+            throw new RuntimeException("Number does not exist for type: " + astroNumType);
+        }
+        logger.info("AstroNums {}",astroNums);
         AstroNum astroNumEntity = astroNums.get(0);
         return new AstroNumDto(
             astroNumEntity.getNumber(),

@@ -27,6 +27,8 @@ public class NumerologyController {
 	public Response<NumerologyResponse> numerologyRequest(@RequestBody NumerologyRequest request) {
 
 		logger.info("CreateOrUpdateAstroNumAdminRequest {} ", request);
+		
+		
 		return new Response<NumerologyResponse>(StatusCode.SUCCESS.name(), StatusCode.SUCCESS.getMessage(),
 				numerologyService.numerologyRequest(request));
 	

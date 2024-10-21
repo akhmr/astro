@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.astro.admin.service.AstroAdminNumerologyService;
 import com.astro.common.Response;
 import com.astro.model.AstroNumRelAdminRequest;
 import com.astro.model.CreateOrUpdateAstroNumAdminRequest;
+import com.astro.service.AstroAdminNumerologyService;
 
 @RestController
 @RequestMapping("/api/admin")

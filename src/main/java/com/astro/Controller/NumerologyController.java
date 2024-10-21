@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.astro.admin.service.AstroNumerologyService;
 import com.astro.common.Response;
 import com.astro.common.constant.StatusCode;
 import com.astro.model.NumerologyRequest;
 import com.astro.model.NumerologyResponse;
+import com.astro.service.AstroNumerologyService;
 
 @RestController
 @RequestMapping("/api/astro/")

@@ -1,4 +1,4 @@
-package com.astro.admin.service;
+package com.astro.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

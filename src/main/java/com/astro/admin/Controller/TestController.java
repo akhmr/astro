@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.astro.common.utils.DateNumerologyUtil;
 import com.astro.common.utils.DateUtil;
 import com.astro.common.utils.NumerologyUtils;
 
@@ -28,7 +29,7 @@ public class TestController {
 		int month = localDate.getMonthValue();
 		int year = localDate.getYear();
 
-		return NumerologyUtils.calculateLifePathNumber(day, month, year);
+		return DateNumerologyUtil.calculateLifePathNumber(day, month, year);
 
 	}
 

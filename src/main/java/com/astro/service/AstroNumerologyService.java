@@ -1,9 +1,7 @@
-package com.astro.admin.service;
+package com.astro.service;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -31,30 +29,27 @@ public class AstroNumerologyService {
 	
 	@Autowired
 	private AstroNumRepo  astroNumRepo;
+	
+	
+	@Autowired
+	private NumerologyNumCalculatorSerivce numerologyNumCalculatorSerivce;
 
 	public NumerologyResponse numerologyRequest(NumerologyRequest request) {
         List<AstroNumDto> astroNumDtos = AstroConstant.parentCategories.stream()
             .map(astroNumType -> getAstroNumDetail(
-                calculateNumerologyNumber(astroNumType, request), astroNumType))
+            		numerologyNumCalculatorSerivce.calculateNumerologyNumber(astroNumType, request), astroNumType))
             .collect(Collectors.toList());
 
         return new NumerologyResponse(astroNumDtos);
     }
 
-    private Integer calculateNumerologyNumber(AstroNumType astroNumType, NumerologyRequest request) {
-        return switch (astroNumType) {
-            case LNP -> NumerologyUtils.calculateLifePathNumber(DateUtil.parseDateToLocalDate(request.getDob()));
-            case DRIVERNO -> NumerologyUtils.calculateDriverNo();
-            case SOULNO -> NumerologyUtils.calculateSoulNo();
-            case KUANO -> NumerologyUtils.calculateKuaNo();
-            default -> throw new IllegalArgumentException("Invalid numerology type: " + astroNumType);
-        };
-    }
 
     private AstroNumDto getAstroNumDetail(Integer astroNumber, AstroNumType astroNumType) {
         List<AstroNum> astroNums = Optional.ofNullable(
-                astroNumRepo.findByNumberAndCategories(astroNumber, AstroConstant.subCategories))
-            .orElseThrow(() -> new RuntimeException("Number does not exist for type: " + astroNumType));
+						                astroNumRepo.findByNumberAndCategories(astroNumber, AstroConstant.subCategories))
+        								.orElseThrow(
+						                () -> new RuntimeException("Number does not exist for type: " + astroNumType)
+        								);
 
         if (astroNums.isEmpty()) {
             throw new RuntimeException("Number does not exist for type: " + astroNumType);

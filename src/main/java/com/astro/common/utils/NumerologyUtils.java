@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.astro.common.eum.Gender;
+
 public class NumerologyUtils {
 	
 	 static final Map<Character, Integer> numerologyMap = new HashMap<>();
@@ -29,12 +31,12 @@ public class NumerologyUtils {
 			return reduceToSingleDigit(lifePathNumber + destinyNumber);
 		}
 
-		public static int calculateKuaNumber(LocalDate localDate, String gender) {
+		public static int calculateKuaNumber(LocalDate localDate, Gender gender) {
 			
 			int birthYear = localDate.getYear();
 			int singleDigit = reduceToSingleDigit(birthYear);
-
-			if (gender.equalsIgnoreCase("male")) {
+			
+			if (gender.equals(Gender.MALE)) {
 				return reduceToSingleDigit(11 - singleDigit);// For males
 			} else {
 				return reduceToSingleDigit(5 + singleDigit);

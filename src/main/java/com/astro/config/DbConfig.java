@@ -68,7 +68,7 @@ public class DbConfig {
 	        private static final long serialVersionUID = 1L;
 
 	        {
-	            setProperty("hibernate.show_sql", "true");
+	           // setProperty("hibernate.show_sql", "true");
 	            setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
 	            setProperty("hibernate.physical_naming_strategy", "org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy");
 	         }

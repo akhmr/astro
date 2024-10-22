@@ -26,7 +26,7 @@ public class NumerologyController {
 	@PostMapping("num/v1")
 	public Response<NumerologyResponse> numerologyRequest(@RequestBody NumerologyRequest request) {
 
-		logger.info("CreateOrUpdateAstroNumAdminRequest {} ", request);
+		logger.info("NumerologyRequest {} ", request);
 		
 		
 		return new Response<NumerologyResponse>(StatusCode.SUCCESS.name(), StatusCode.SUCCESS.getMessage(),

@@ -2,6 +2,7 @@ package com.astro.service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -12,8 +13,6 @@ import org.springframework.stereotype.Service;
 
 import com.astro.common.constant.AstroConstant;
 import com.astro.common.eum.AstroNumType;
-import com.astro.common.utils.DateUtil;
-import com.astro.common.utils.NumerologyUtils;
 import com.astro.entity.AstroNum;
 import com.astro.entity.repo.AstroNumRepo;
 import com.astro.model.AstroNumDto;
@@ -38,6 +37,7 @@ public class AstroNumerologyService {
         List<AstroNumDto> astroNumDtos = AstroConstant.parentCategories.stream()
             .map(astroNumType -> getAstroNumDetail(
             		numerologyNumCalculatorSerivce.calculateNumerologyNumber(astroNumType, request), astroNumType))
+            .filter(Objects::nonNull)  
             .collect(Collectors.toList());
 
         return new NumerologyResponse(astroNumDtos);
@@ -46,7 +46,7 @@ public class AstroNumerologyService {
 
     private AstroNumDto getAstroNumDetail(Integer astroNumber, AstroNumType astroNumType) {
         List<AstroNum> astroNums = Optional.ofNullable(
-						                astroNumRepo.findByNumberAndNumTypeAndCategories(astroNumber,astroNumType.name(), AstroConstant.subCategories))
+						                astroNumRepo.findByNumberAndNumTypes(astroNumber,astroNumType.name()))
         								.orElseThrow(
 						                () -> new RuntimeException("Number does not exist for type: " + astroNumType)
         								);

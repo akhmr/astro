@@ -8,6 +8,7 @@ import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
 
+import com.astro.common.eum.Gender;
 import com.astro.common.utils.DateNumerologyUtil;
 import com.astro.common.utils.NameNumerologyUtil;
 import com.astro.common.utils.NumerologyUtils;
@@ -24,9 +25,6 @@ public class NumerologyUtilsTest {
         String name = "Pooja Rawat";
         int expectedDestinyNumber = 3; // J(1) + O(6) + H(8) + N(5) + D(4) + O(6) + E(5) = 35 -> 3 + 5 = 8
         int actualDestinyNumber = NameNumerologyUtil.calculateDestinyNo(name);
-        System.out.println("DestinyNumber "+actualDestinyNumber);
-
-
         assertEquals(expectedDestinyNumber, actualDestinyNumber);
     }
 
@@ -110,8 +108,6 @@ public class NumerologyUtilsTest {
         String name = "Pooja rawat";
         int expectedPersonalityNumber = 6; // J(1) + H(8) + D(4) = 13 -> 1 + 3 = 4
         int actualPersonalityNumber = NameNumerologyUtil.calculatePersonalityNumber(name);
-        System.out.println("Personality no "+actualPersonalityNumber);
-
         assertEquals(expectedPersonalityNumber, actualPersonalityNumber);
     }
 
@@ -279,7 +275,7 @@ public class NumerologyUtilsTest {
     @Test
     public void testCalculateKuaNumber_Male() {
         // Test case for a male
-        String gender = "male";
+    	Gender gender = Gender.MALE;
         LocalDate birthDate = LocalDate.of(1980, 12, 31); 
         int expectedKuaNumber = 2; // 1 + 9 + 8 + 0 = 18 -> 1 + 8 = 9; 11 - 9 = 2
         int actualKuaNumber = NumerologyUtils.calculateKuaNumber(birthDate, gender);
@@ -291,7 +287,7 @@ public class NumerologyUtilsTest {
     public void testCalculateKuaNumber_Female() {
         // Test case for a female
     	LocalDate birthDate = LocalDate.of(1980, 12, 31);
-        String gender = "female";
+        Gender gender = Gender.FEMALE;
         int expectedKuaNumber = 5; // 1 + 9 + 8 + 0 = 18 -> 1 + 8 = 9; 5 + 9 = 14 -> 1 + 4 = 5
         int actualKuaNumber = NumerologyUtils.calculateKuaNumber(birthDate, gender);
 

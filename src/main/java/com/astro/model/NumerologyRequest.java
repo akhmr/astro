@@ -1,6 +1,7 @@
 package com.astro.model;
 
 import com.astro.common.eum.AstroNumType;
+import com.astro.common.eum.Gender;
 
 public class NumerologyRequest {
 	
@@ -10,7 +11,7 @@ public class NumerologyRequest {
 	
 	private String dob;
 	
-	private String gender;
+	private Gender gender;
 
 	public AstroNumType getNumerologyType() {
 		return numerologyType;
@@ -36,11 +37,11 @@ public class NumerologyRequest {
 		this.dob = dob;
 	}
 	
-	public String getGender() {
+	public Gender getGender() {
 		return gender;
 	}
 
-	public void setGender(String gender) {
+	public void setGender(Gender gender) {
 		this.gender = gender;
 	}
 
@@ -49,7 +50,6 @@ public class NumerologyRequest {
 		return "NumerologyRequest [numerologyType=" + numerologyType + ", name=" + name + ", dob=" + dob + ", gender="
 				+ gender + "]";
 	}
-
 	
 
 }

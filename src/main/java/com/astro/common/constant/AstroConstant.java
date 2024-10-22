@@ -6,7 +6,7 @@ import java.util.List;
 import com.astro.common.eum.AstroNumType;
 
 public interface AstroConstant {
-	List<String> subCategories = Arrays.asList("lnp_generic", "Love_Rel", "Career");
+	List<String> subCategories = Arrays.asList("lnp_generic");//, "Love_Rel", "Career");
 
 	List<AstroNumType> parentCategories = Arrays.asList(AstroNumType.LIFE_PATH_NUM,
 														AstroNumType.PERSONALITY_NUM,
